@@ -145,6 +145,7 @@ html
       infoWindow.setPosition(pos);
       infoWindow.setContent("You are here!" );
       map.setCenter(pos);
+      map.setZoom(7);
       }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
       });
@@ -158,6 +159,7 @@ html
           lat: doctor.location[0],
           lng: doctor.location[1]
         };
+        map.setCenter(pos);
         newWindow.setPosition(pos);
         newWindow.setContent(doctor.name + "<br>" + doctor.specialty);
       }

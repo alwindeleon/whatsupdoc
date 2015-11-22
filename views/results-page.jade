@@ -322,6 +322,7 @@ html
     |     
     style.
       html, body {
+      font-family: "Poiret One";
       height: 100%;
       margin: 0;
       padding: 0;
@@ -368,7 +369,7 @@ html
               a(href='doctor/#{user.name}') 
                 span.title= user.name
               |             
-              p=user.specialty
+              p= user.specialty
                 br
               p.small=user.email           
               p Rating: 

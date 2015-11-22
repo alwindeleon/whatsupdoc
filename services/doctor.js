@@ -22,7 +22,7 @@ exports.addReview = function(info, callback){
 };
 
 exports.searchMatches = function(tags, callback){
-  Doctor.find({tags:{$in:[tags]}}, callback);
+  Doctor.find({tags:{$all:tags}}, callback);
 };
 
 // exports.saveDoctor= function(info, callback, errback){
