@@ -1,0 +1,51 @@
+h1
+{
+  font-family: "Raleway";
+  font-weight: 400;
+  color: #fff;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+
+}
+
+body{
+  background-image: url("/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.center-object{
+  margin-top: 100px;
+}
+
+.search{
+  font-size: 35px !important;
+  color: #fff;
+  font-family: "Raleway";
+  font-weight: 300;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+.mini-search{
+  font-size: 20px !important;
+  color: #000;
+  font-family: "Raleway";
+  font-weight: 300;
+  height: 35px !important;
+}
+
+.mini-parent{
+  border: 1px solid teal;
+  border-radius: 50px 0px 0px 50px;
+  background: #fff;
+  height: 40px;
+  margin-top: 13px;
+}
+
+.mini-btn{
+  width: 50px;
+  border: 1px solid teal;
+  border-radius: 0px 50px 50px 0px;
+  text-indent: -25px;
+  font-size: 12px;
+}

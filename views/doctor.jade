@@ -1,0 +1,181 @@
+doctype html
+html
+  head
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    link(rel='stylesheet', type='text/css', href='/css/materialize.css')
+    title Sup Doc
+    |     
+    meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
+    |     
+    meta(charset='utf-8')
+    |     
+    style.
+      html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      }
+      body
+      {
+      background-color: antiquewhite;
+      }
+      #doctorcard
+      {
+      padding-top: 50px;
+      }
+      #submit-comment h3
+      {
+      font-size: 12px;
+      }
+      #doctorcard
+      {
+      height: 100%;
+      width: 50%;
+      overflow-y: scroll;
+      }
+      #map
+      {
+      height:100%;
+      width:50%;
+      }
+      .card-image{
+          width:300px; /* you can use % */
+          margin: 20px auto;
+          height: auto;
+      }
+      #modal1 {
+        margin: 0 auto;
+      }
+      ul li
+      {
+        margin-bottom: 17px !important;
+      }
+      #homebutton
+      {
+        margin-top:-40px;
+        margin-left: 20px;
+        z-index: 100;
+      }
+      
+  |   
+  body
+
+
+    #doctorcard.left.container
+      #homebutton.left
+        a(type='submit', href="/")#search-button.orange.waves-effect.waves-light.btn Home
+      .container#docspace.center-align
+        .card
+
+          .card-image
+            img(src="http://beelinetour.com/wp-content/uploads/2014/05/avatar.jpg")
+            .row
+              .col.m6
+                p= doctor.name
+              .col.m6
+                p Average Rating:  
+                  span=doctor.rating
+          .card-content 
+            span= doctor.specialty
+            br
+            span=doctor.email
+      .row
+        .col.m4.offset-m4
+          a.waves-effect.waves-light.btn.modal-trigger(href='#modal1') 
+            i.material-icons.right
+              Add.center-align Comment !
+        
+      #comments.container
+        ul.collection
+          if(doctor.reviews.length == 0)
+            h3 No reviews yet!
+          else
+             h2 Comments
+             ul.collection
+              for review in doctor.reviews
+                li.collection-item
+                  h6=review
+
+      // Modal Structure
+      #modal1.modal.bottom-sheet
+        .modal-content
+          .container
+            h4 Add Comment
+          | &#x9;&#x9;      &#x9;
+          
+          #submit-comment.container
+            .row
+              form(action="/reviews/#{doctor.name}",method="POST").col.s12
+                .row
+                  .input-field.col.1
+                      label(for="rating").small Rating
+                      input(type="text",name="rating")
+                .row
+                  .input-field.col.4
+
+                    textarea(name="info")#textarea1.materialize-textarea
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;          
+                    label(for='textarea1') Textarea
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;          
+                    button(type='submit')#search-button.waves-effect.waves-light.btn Submit
+    // Modal Trigger
+    #map.right
+    |         
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    |     
+    script.
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error The Geolocation service
+      // failed., it means you probably did not give permission for the browser to
+      // locate you.
+      var map = '';
+      function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 15
+      });
+      var infoWindow = new google.maps.InfoWindow({map: map});
+      // Try HTML5 geolocation.
+      if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+      };
+      infoWindow.setPosition(pos);
+      infoWindow.setContent("You are here!" );
+      map.setCenter(pos);
+      }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+      });
+      } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+      }
+        var doctor =!{JSON.stringify(doctor)};
+        var newWindow = new google.maps.InfoWindow({map: map});
+         var pos = {
+          lat: doctor.location[0],
+          lng: doctor.location[1]
+        };
+        newWindow.setPosition(pos);
+        newWindow.setContent(doctor.name + "<br>" + doctor.specialty);
+      }
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ?
+      'Error: The Geolocation service failed.' :
+      "Error: Your browser doesn\\'t support geolocation.");
+      }
+    |     
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAQo32c4pgQzD3Jmkpr61pRi9U4ccs73PA&signed_in=true&callback=initMap', async='', defer='')
+    |     
+    script(type='text/javascript', src='/js/materialize.min.js')
+    |   &#x9;
+    script(type='text/javascript').
+      $(document).ready(function(){
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal-trigger').leanModal();
+      });
+    |     
+    

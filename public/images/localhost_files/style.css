@@ -1,0 +1,27 @@
+h1
+{
+	font-family: "Raleway";
+	font-weight: 500;
+	color: #fff;
+	text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+
+}
+
+body{
+	background-image: url("/images/bg.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.center-object{
+	margin-top: 170px;
+}
+
+.search{
+	font-size: 35px !important;
+	color: #fff;
+	font-family: "Raleway";
+	font-weight: 300;
+	text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}

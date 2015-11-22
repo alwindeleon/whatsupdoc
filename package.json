@@ -1,0 +1,16 @@
+{
+  "name": "whatsupdoc",
+  "version": "1.0.0",
+  "description": "create a charity finder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "blu,fafa,gabriel",
+  "license": "ISC",
+  "dependencies": {
+    "jade": "^1.11.0",
+    "mongoose-seed": "^0.1.5",
+    "path": "^0.12.7"
+  }
+}
