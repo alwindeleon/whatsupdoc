@@ -9,7 +9,13 @@
   "author": "blu,fafa,gabriel",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.1",
+    "chai": "^3.4.1",
+    "chai-http": "^1.0.0",
+    "express": "^4.13.3",
     "jade": "^1.11.0",
+    "mocha": "^2.3.4",
+    "mongoose": "^4.2.7",
     "mongoose-seed": "^0.1.5",
     "path": "^0.12.7"
   }
