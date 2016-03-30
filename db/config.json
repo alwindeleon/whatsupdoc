@@ -1,0 +1,13 @@
+{
+	"development": {
+		"url": "mongodb://localhost/whatsupdoc-dev"
+	},
+	"test":{
+		"url": "mongodb://localhost/whatsupdoc-test"
+	},
+	"production":{
+		"url":"mongodb://localhost/whatsupdoc"
+	}
+
+
+}
